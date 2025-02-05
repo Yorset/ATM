@@ -16,6 +16,7 @@ def add_menu():
         print("5. $5")
         print("6. $1")
         print("7. Exit")
+        
         option = int(input())
 
         if option == 7:
