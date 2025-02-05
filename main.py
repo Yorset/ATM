@@ -13,9 +13,18 @@ def main():
 
     while True:
         user_option = atm_screens.home_screen()
-        if user_option == atm_enum.UserOptions.SAVE_MONEY.value:
+        print()
+        if user_option == atm_enum.UserOptions.CHECK_BALANCE:
+            print(atm_enum.UserOptions)
+
+        if user_option == atm_enum.UserOptions.SAVE_MONEY:
+            print(atm_enum.UserOptions)
+
+        if user_option == atm_enum.UserOptions.WITHDRAW_MONEY:
+            print(atm_enum.UserOptions)
+
+        if user_option == atm_enum.UserOptions.EXIT:
             print(atm_enum.UserOptions)
 
 
-if __name__ == "__main__":
-    main()
+main()

@@ -9,6 +9,7 @@ class UserOptions(Enum):
     CLASS ENUM
     """
 
-    SAVE_MONEY = 1
-    VERDE = 2
-    AZUL = 3
+    CHECK_BALANCE = 1
+    SAVE_MONEY = 2
+    WITHDRAW_MONEY = 3
+    EXIT = 4
