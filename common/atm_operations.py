@@ -21,6 +21,8 @@ def current_balance(currents_bills: Dict[int, int]) -> None:
     print(f"Your current balance is: {atm_total}")
     input("Press any key to continue")
 
+# Fix save money
+
 
 def save_money(
     type_bill: atm_enum.Bill,
