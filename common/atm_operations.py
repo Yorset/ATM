@@ -7,7 +7,7 @@ from utils import console_utils
 from common import atm_enum
 
 
-def current_balance(currents_bills: Dict[int, int]) -> None:
+def current_balance(currents_bills: Dict[atm_enum.Bill, int]) -> None:
     """
     method for view current balance from ATM
     """
@@ -16,12 +16,10 @@ def current_balance(currents_bills: Dict[int, int]) -> None:
     atm_total = 0
 
     for key, value in currents_bills.items():
-        atm_total += key * value
+        atm_total += key.value * value  # <- changed by adding '.value' to key.
 
     print(f"Your current balance is: {atm_total}")
     input("Press any key to continue")
-
-# Fix save money
 
 
 def save_money(
