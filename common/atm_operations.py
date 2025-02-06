@@ -36,10 +36,8 @@ def save_money(
     ))
     current_bill_cant = currents_bills.get(type_bill)
 
-    print(f"{currents_bills.update([
-        type_bill,
-        current_bill_cant + input_bill_cant
-    ])}")
+    currents_bills[type_bill] = current_bill_cant + input_bill_cant
+    print(currents_bills)
     print("-------------------------")
     print(type_bill, currents_bills)
     return currents_bills
