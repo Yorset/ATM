@@ -24,9 +24,20 @@ def current_balance(currents_bills: Dict[int, int]) -> None:
 
 def save_money(
     type_bill: atm_enum.Bill,
-    currents_bills: Dict[int, int]
-) -> None:
+    currents_bills: Dict[atm_enum.Bill, int]
+) -> Dict[atm_enum.Bill, int]:
     """
     method for save balance from ATM
     """
+    input_bill_cant = int(input(
+        f"Input the number of bills (${type_bill.value}): "
+    ))
+    current_bill_cant = currents_bills.get(type_bill)
+
+    print(f"{currents_bills.update([
+        type_bill,
+        current_bill_cant + input_bill_cant
+    ])}")
+    print("-------------------------")
     print(type_bill, currents_bills)
+    return currents_bills

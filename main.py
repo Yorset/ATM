@@ -10,12 +10,12 @@ def main():
     main.py
     """
     atm_balance = {
-        100: 3,
-        50: 6,
-        20: 10,
-        10: 50,
-        5: 10,
-        1: 50
+        atm_enum.Bill.HUNDRED: 3,
+        atm_enum.Bill.FIFTY: 6,
+        atm_enum.Bill.TWENTY: 10,
+        atm_enum.Bill.TEN: 50,
+        atm_enum.Bill.FIVE: 10,
+        atm_enum.Bill.ONE: 50
     }  # <- ATM availability
 
     while True:
@@ -25,7 +25,10 @@ def main():
 
         if user_option == atm_enum.UserOptions.SAVE_MONEY:
             option_save_money = atm_screens.save_money_screen()
-            atm_operations.save_money(option_save_money, atm_balance)
+            atm_balance = atm_operations.save_money(
+                option_save_money,
+                atm_balance
+            )
 
         if user_option == atm_enum.UserOptions.WITHDRAW_MONEY:
             print(atm_enum.UserOptions)

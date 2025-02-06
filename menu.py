@@ -1,5 +1,8 @@
 # File for main menu (Options)
 
+# Is this actually needed or can we deleted since
+# you already have this menu much better under common?? -> @yigs <-
+
 def main_menu():
     print("Welcome!")
     print("Please select an option:")

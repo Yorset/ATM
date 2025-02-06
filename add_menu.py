@@ -2,8 +2,7 @@
 # To select the denomination and mount of bills
 # to save
 
-def add_menu():
-    atm_bills = {100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 1: 0}
+def add_menu(atm_bills):  # <- parameter for dictionary on main function
     switch = True
     while switch:
         print("Please select the denomination of the bill you will introduce")
@@ -16,7 +15,7 @@ def add_menu():
         print("5. $5")
         print("6. $1")
         print("7. Exit")
-        
+
         option = int(input())
 
         if option == 7:
@@ -81,3 +80,20 @@ def add_menu():
             print("Please Select a valid option.")
 
     return atm_bills
+
+
+# Same code above but shorter and prob consumes less memory and time?
+# # elif option in [1, 2, 3, 4, 5, 6]:
+#             denominations = {1: 100, 2: 50, 3: 20, 4: 10, 5: 5, 6: 1}
+#             bill_value = denominations[option]
+#             print("Enter the number of bills:")
+#             cant = int(input())
+#             atm_bills[bill_value] += cant  # Update existing dictionary
+#             print(atm_bills)
+#             print("Transaction completed successfully!")
+#             print(f"You saved: ${bill_value * cant}.")
+#         else:
+#             print("Wrong option.")
+#             print("Please select a valid option.")
+
+#     return atm_bills  # Optional, but can be useful

@@ -36,11 +36,11 @@ def save_money_screen():
 
     bill_list = list(atm_enum.Bill)
 
-    for index, bill, in enumerate(bill_list, start=1):
-        print(f"{index}. ${bill.value}")
+    for index, bill, in enumerate(bill_list, start=0):
+        print(f"{index + 1}. ${bill.value}")
 
     print("---------------------------------------")
     input_option = int(input("Option:"))
 
-    option = bill_list[input_option]
+    option = bill_list[input_option - 1]
     return option
