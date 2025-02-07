@@ -21,6 +21,8 @@ def current_balance(currents_bills: Dict[atm_enum.Bill, int]) -> None:
     print(f"Your current balance is: {atm_total}")
     input("Press any key to continue")
 
+    return atm_total
+
 
 def save_money(
     type_bill: atm_enum.Bill,
@@ -39,3 +41,25 @@ def save_money(
     print("-------------------------")
     print(type_bill, currents_bills)
     return currents_bills
+
+
+def withdraw(
+    withdraw_amount: int,
+    currents_bills: Dict[atm_enum.Bill, int]
+) -> Dict[atm_enum.Bill, int]:
+    """
+    method to withdraw balance from ATM
+    """
+    sorted_bills = sorted(
+        currents_bills.keys(),
+        key=lambda bill: bill.value,
+        reverse=True
+    )
+
+    atm_total = sum(
+        bill.value * count for bill,
+        count in currents_bills.items()
+    )
+    new_total = atm_total - withdraw_amount
+    variable = 0
+    return variable

@@ -44,3 +44,16 @@ def save_money_screen():
 
     option = bill_list[input_option - 1]
     return option
+
+
+def withdraw_money_screen():
+    """
+    ATM | withdraw money screen
+    """
+    print("---------------------------------------")
+    print("Please enter the amount to withdraw")
+
+    desired_amount = int(input("Amount: $"))
+    return desired_amount
+    
+    if desired_amount > 
