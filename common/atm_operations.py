@@ -7,7 +7,7 @@ from utils import console_utils
 from common import atm_enum
 
 
-def current_balance(currents_bills: Dict[atm_enum.Bill, int]) -> None:
+def current_balance(currents_bills: Dict[atm_enum.Bill, int]) -> int:
     """
     method for view current balance from ATM
     """
@@ -36,6 +36,12 @@ def save_money(
     ))
     current_bill_cant = currents_bills.get(type_bill)
 
+    if current_bill_cant is None:
+        print("Error: Incorrect amount.")
+        print("Please enter a valid amount.")
+        input("Press any key to continue")
+        return currents_bills
+
     currents_bills[type_bill] = current_bill_cant + input_bill_cant
     print(currents_bills)
     print("-------------------------")
@@ -51,27 +57,50 @@ def withdraw(
     method to withdraw balance from ATM
     """
 
-    atm_total = sum(
-        bill.value * count for bill,
-        count in currents_bills.items()
-    )
-
-    if withdraw_amount > atm_total:
+    if withdraw_amount > get_total_bills(currents_bills):
         print("Error: Incorrect amount.")
-        print(f"Your current balance is: {atm_total}")
+        print(f"Your current balance is: {get_total_bills(currents_bills)}")
         print("Please enter a valid amount.")
         input("Press any key to continue")
         return currents_bills
 
-    for bill in currents_bills:
-        bills_to_dispense = withdraw_amount // bill.value
-        num_bill_to_dispense = min(currents_bills[bill], bills_to_dispense)
-        print(num_bill_to_dispense)
+    for bill_value in get_bills(currents_bills):
+        bill = atm_enum.Bill(bill_value)
+        bills_to_dispense = withdraw_amount // bill_value
+        num_bill_to_dispense = min(
+            currents_bills[bill],
+            bills_to_dispense
+        )
+        withdraw_amount = withdraw_amount - (num_bill_to_dispense * bill_value)
+        currents_bills[bill] = currents_bills[bill] - num_bill_to_dispense
+        print(f"Quantity bills of {bill.value}: {num_bill_to_dispense}")
+        if withdraw_amount <= 0:
+            break
 
     print("Transaction completed successfully!")
-    print(f"Your new balance is: {atm_total}")
+    print(f"Your new balance is: {get_total_bills(currents_bills)}")
     input("Press any key to continue")
 
     # new_total = atm_total - withdraw_amount
     # variable = 0
-    return None
+    return currents_bills
+
+
+def get_bills(currents_bills: Dict[atm_enum.Bill, int]) -> list[int]:
+    """
+    method to withdraw balance from ATM
+    """
+    return sorted(
+        [atm_enum.Bill(key).value for key in currents_bills],
+        reverse=True
+    )
+
+
+def get_total_bills(currents_bills: Dict[atm_enum.Bill, int]) -> int:
+    """
+    method to withdraw balance from ATM
+    """
+    return sum(
+        bill.value * count for bill,
+        count in currents_bills.items()
+    )
