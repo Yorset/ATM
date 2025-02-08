@@ -18,6 +18,9 @@ def withdraw():
     if desired_amount > atm_total:
         print("Transaction error. Amount entered is incorrect.")
         print(f"Please enter a correct amount. Your balance is: {atm_total}.")
+        # Pending to fix, prints error but keeps running.
+        # I need it to cancel, go back to withdraw menu and ask for
+        # new valid desired amount. (possible fix "return none")
     
     elif desired_amount <= atm_total:
         dispensed_bills = {}
