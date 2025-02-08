@@ -55,5 +55,3 @@ def withdraw_money_screen():
 
     desired_amount = int(input("Amount: $"))
     return desired_amount
-    
-    if desired_amount > 

@@ -50,16 +50,28 @@ def withdraw(
     """
     method to withdraw balance from ATM
     """
-    sorted_bills = sorted(
-        currents_bills.keys(),
-        key=lambda bill: bill.value,
-        reverse=True
-    )
 
     atm_total = sum(
         bill.value * count for bill,
         count in currents_bills.items()
     )
-    new_total = atm_total - withdraw_amount
-    variable = 0
-    return variable
+
+    if withdraw_amount > atm_total:
+        print("Error: Incorrect amount.")
+        print(f"Your current balance is: {atm_total}")
+        print("Please enter a valid amount.")
+        input("Press any key to continue")
+        return currents_bills
+
+    for bill in currents_bills:
+        bills_to_dispense = withdraw_amount // bill.value
+        num_bill_to_dispense = min(currents_bills[bill], bills_to_dispense)
+        print(num_bill_to_dispense)
+
+    print("Transaction completed successfully!")
+    print(f"Your new balance is: {atm_total}")
+    input("Press any key to continue")
+
+    # new_total = atm_total - withdraw_amount
+    # variable = 0
+    return None
